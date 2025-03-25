@@ -3,93 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Output 1</title>
-    <style>
-        body {
-            font-family: "Arial";
-        }
-    </style>
+    <title>PHP Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>PHP Output No. 1</h1>
+<body class="container mt-5">
+    <h1 class="mb-4">PHP Form with Validation</h1>
     
-    <fieldset>
-        <legend>This form uses GET request</legend>
-        <form action="redirect.php" method="GET">
-        <table>
-            <tr>
-            <td>Age:</td>
-                <td>
-                    <input type="number" name="age" placeholder="Age" required />
-                </td>
-            </tr>
-            <tr>
-            <td>Gender:</td>
-                <td>
-                    <input type="text" name="gender" placeholder="Gender" required />
-                </td>
-            </tr>
-            <tr>
-            <td>Address:</td>
-                <td>
-                    <input type="text" name="adress" placeholder="Address" required />
-                </td>
-            </tr>
-            <tr>
-            <td>Contact Number:</td>
-                <td>
-                    <input type="text" name="contactnumber" placeholder="Contact Number" required />
-                </td>
-            </tr>
-            <tr>     
-                <td></td>
-                <td>
-                    <input type="submit" value="Submit Data">
-                    <input type="reset" value="Cancel">
-                </td>
-            </tr>
-        </table>
+    <div class="card p-4">
+        <form action="redirect.php" method="POST" novalidate>
+            <div class="mb-3">
+                <label class="form-label">Age:</label>
+                <input type="number" name="age" class="form-control" min="1" max="120" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Gender:</label>
+                <select name="gender" class="form-control" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email:</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Address:</label>
+                <input type="text" name="address" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contact Number:</label>
+                <input type="tel" name="contactnumber" class="form-control" pattern="[0-9]{10}" placeholder="10-digit number" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
         </form>
-    </fieldset>
-    
-    <fieldset style="margin-top: 20px">
-        <legend>This form uses POST request</legend>
-        <form action="redirect.php" method="POST">
-        <table>
-            <tr>
-            <td>Age</td>
-                <td>
-                    <input type="number" name="age" placeholder="Age" required />
-                </td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td>
-                    <input type="text" name="gender" placeholder="Gender" required />
-                </td>
-            </tr>
-            <tr>
-                <td>Address</td>
-                <td>
-                    <input type="text" name="adress" placeholder="Address" required />
-                </td>
-            </tr>
-            <tr>
-                <td>Contact Number</td>
-                <td>
-                    <input type="text" name="contactnumber" placeholder="Contact Number" required />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" value="Submit Data">
-                    <input type="reset" value="Cancel">
-                </td>
-            </tr>
-        </table>
-        </form>
-    </fieldset>
-
+    </div>
 </body>
 </html>

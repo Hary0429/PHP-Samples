@@ -1,67 +1,34 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $age = filter_input(INPUT_POST, 'age', FILTER_VALIDATE_INT);
+    $gender = htmlspecialchars($_POST['gender']);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $address = htmlspecialchars($_POST['address']);
+    $contactnumber = filter_input(INPUT_POST, 'contactnumber', FILTER_SANITIZE_NUMBER_INT);
     
-    if($_SERVER['REQUEST_METHOD'] === 'GET'){
-        $req_type = '$_GET';
+    if (!$age || !$email || empty($gender) || empty($address) || empty($contactnumber)) {
+        echo "<script>alert('Invalid input! Please check your details.'); window.history.back();</script>";
+        exit;
     }
-
-    if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $req_type = '$_POST';
-    }
-
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Output No. 1</title>
-    <style>
-        body {
-            font-family: "Arial";
-        }
-    </style>
+    <title>Form Submission</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h2>Data is sent here, and it is store at <?php echo $req_type; ?> variable</h2>
-    <table>
-        <tr>
-            <td width="120">Age:</td>
-            <td style="text-decoration: underline">
-                <!-- Use ternary operator to check if the request type is GET or POST -->
-                <?php echo ($req_type == '$_GET') ? $_GET['age'] : $_POST['age']; ?>
-            </td>
-        </tr>
-        <tr>
-            <td>Gender:</td>
-            <td style="text-decoration: underline">
-                <!-- Use ternary operator to check if the request type is GET or POST -->
-                <?php echo ($req_type == '$_GET') ? $_GET['gender'] : $_POST['gender']; ?>
-            </td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td style="text-decoration: underline">
-                <!-- Use ternary operator to check if the request type is GET or POST -->
-                <?php echo ($req_type == '$_GET') ? $_GET['email'] : $_POST['email'];?>
-            </td>
-        </tr>
-        <tr>
-            <td>Address:</td>
-            <td style="text-decoration: underline">
-                <!-- Use ternary operator to check if the request type is GET or POST -->
-                <?php echo ($req_type == '$_GET') ? $_GET['address'] : $_POST['address'];?>
-            </td>
-        </tr>
-        <tr>
-            <td>Contact Number:</td>
-            <td style="text-decoration: underline">
-                <!-- Use ternary operator to check if the request type is GET or POST -->
-                <?php echo ($req_type == '$_GET') ? $_GET['contact number'] : $_POST['contact number'];?>
-            </td>
-        </tr>
+<body class="container mt-5">
+    <h2>Submitted Data</h2>
+    <table class="table table-bordered">
+        <tr><td><strong>Age:</strong></td><td><?php echo $age; ?></td></tr>
+        <tr><td><strong>Gender:</strong></td><td><?php echo $gender; ?></td></tr>
+        <tr><td><strong>Email:</strong></td><td><?php echo $email; ?></td></tr>
+        <tr><td><strong>Address:</strong></td><td><?php echo $address; ?></td></tr>
+        <tr><td><strong>Contact Number:</strong></td><td><?php echo $contactnumber; ?></td></tr>
     </table>
-    <br><br>
-    <a href="./">Return to Main Form</a>
+    <a href="./" class="btn btn-primary">Return to Main Form</a>
 </body>
 </html>

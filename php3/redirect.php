@@ -1,38 +1,26 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "myfirstdb";
+include 'db_connect.php';
 
-$conn = new mysqli($servername, $username, $password, $db);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first_name = $_POST['first_name'];
+    $middle_name = $_POST['middle_name'];
+    $last_name = $_POST['last_name'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $contact = $_POST['contact'];
 
-if($conn->connect_error) {
-    die("Connection Failed: ". $conn->connect_error);
-}
+    $stmt = $conn->prepare("INSERT INTO patients (first_name, middle_name, last_name, age, gender, email, address, contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssissss", $first_name, $middle_name, $last_name, $age, $gender, $email, $address, $contact);
 
-
-if(isset($_POST['submit'])) {
-    $fname = $_POST['fname'];
-    $mname = $_POST['mname'];
-    $lname = $_POST['lname'];
-
-    $sql = "INSERT INTO persons(person_fname,person_mname,person_lname) VALUES('$fname', '$mname', '$lname')";
-
-    if($conn->query($sql) === TRUE) {
-        $isSuccess = true;
+    if ($stmt->execute()) {
+        header("Location: index.php?success=1");
     } else {
-        echo $sql." ".$conn->error;
+        echo "Error: " . $stmt->error;
     }
 
+    $stmt->close();
 }
-
+$conn->close();
 ?>
-
-<?php include './layout/head.php'; ?>
-    
-    <?php if($isSuccess ): ?>
-        <h3>Record Successfully Inserted to Database</h3>
-    <?php endif; ?>
-    
-    <a href="./">Back to Main Form</a>
-<?php include './layout/foot.php'; ?>
