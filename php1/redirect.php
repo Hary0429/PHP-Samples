@@ -26,24 +26,38 @@
     <h2>Data is sent here, and it is store at <?php echo $req_type; ?> variable</h2>
     <table>
         <tr>
-            <td width="120">First Name:</td>
+            <td width="120">Age:</td>
             <td style="text-decoration: underline">
                 <!-- Use ternary operator to check if the request type is GET or POST -->
-                <?php echo ($req_type == '$_GET') ? $_GET['fname'] : $_POST['fname']; ?>
+                <?php echo ($req_type == '$_GET') ? $_GET['age'] : $_POST['age']; ?>
             </td>
         </tr>
         <tr>
-            <td>Middle Name:</td>
+            <td>Gender:</td>
             <td style="text-decoration: underline">
                 <!-- Use ternary operator to check if the request type is GET or POST -->
-                <?php echo ($req_type == '$_GET') ? $_GET['mname'] : $_POST['mname']; ?>
+                <?php echo ($req_type == '$_GET') ? $_GET['gender'] : $_POST['gender']; ?>
             </td>
         </tr>
         <tr>
-            <td>Last Name:</td>
+            <td>Email:</td>
             <td style="text-decoration: underline">
                 <!-- Use ternary operator to check if the request type is GET or POST -->
-                <?php echo ($req_type == '$_GET') ? $_GET['lname'] : $_POST['lname'];?>
+                <?php echo ($req_type == '$_GET') ? $_GET['email'] : $_POST['email'];?>
+            </td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td style="text-decoration: underline">
+                <!-- Use ternary operator to check if the request type is GET or POST -->
+                <?php echo ($req_type == '$_GET') ? $_GET['address'] : $_POST['address'];?>
+            </td>
+        </tr>
+        <tr>
+            <td>Contact Number:</td>
+            <td style="text-decoration: underline">
+                <!-- Use ternary operator to check if the request type is GET or POST -->
+                <?php echo ($req_type == '$_GET') ? $_GET['contact number'] : $_POST['contact number'];?>
             </td>
         </tr>
     </table>

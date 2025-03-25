@@ -18,24 +18,30 @@
         <form action="redirect.php" method="GET">
         <table>
             <tr>
-                <td>First Name</td>
+            <td>Age:</td>
                 <td>
-                    <input type="text" name="fname" placeholder="Enter First Name" required />
+                    <input type="number" name="age" placeholder="Age" required />
                 </td>
             </tr>
             <tr>
-                <td>Middle Name</td>
+            <td>Gender:</td>
                 <td>
-                    <input type="text" name="mname" placeholder="Enter Middle Name" required />
+                    <input type="text" name="gender" placeholder="Gender" required />
                 </td>
             </tr>
             <tr>
-                <td>Last Name</td>
+            <td>Address:</td>
                 <td>
-                    <input type="text" name="lname" placeholder="Enter Last Name" required />
+                    <input type="text" name="adress" placeholder="Address" required />
                 </td>
             </tr>
             <tr>
+            <td>Contact Number:</td>
+                <td>
+                    <input type="text" name="contactnumber" placeholder="Contact Number" required />
+                </td>
+            </tr>
+            <tr>     
                 <td></td>
                 <td>
                     <input type="submit" value="Submit Data">
@@ -51,21 +57,27 @@
         <form action="redirect.php" method="POST">
         <table>
             <tr>
-                <td>First Name</td>
+            <td>Age</td>
                 <td>
-                    <input type="text" name="fname" placeholder="Enter First Name" required />
+                    <input type="number" name="age" placeholder="Age" required />
                 </td>
             </tr>
             <tr>
-                <td>Middle Name</td>
+                <td>Gender</td>
                 <td>
-                    <input type="text" name="mname" placeholder="Enter Middle Name" required />
+                    <input type="text" name="gender" placeholder="Gender" required />
                 </td>
             </tr>
             <tr>
-                <td>Last Name</td>
+                <td>Address</td>
                 <td>
-                    <input type="text" name="lname" placeholder="Enter Last Name" required />
+                    <input type="text" name="adress" placeholder="Address" required />
+                </td>
+            </tr>
+            <tr>
+                <td>Contact Number</td>
+                <td>
+                    <input type="text" name="contactnumber" placeholder="Contact Number" required />
                 </td>
             </tr>
             <tr>
